@@ -7,8 +7,8 @@ router.get("/clientes", clientes.buscar);
 
 router.post("/clientes", clientes.criar);
 
-router.get("/clientes/:id", clientes.deletar);
+router.delete("/clientes/:_id", clientes.deletar);
 
-router.get("/clientes/:id", clientes.atualizar);
+router.put("/clientes/:_id", clientes.atualizar);
 
 module.exports = router;

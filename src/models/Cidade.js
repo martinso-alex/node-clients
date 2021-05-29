@@ -9,12 +9,6 @@ const schema = mongoose.Schema({
 		type: String,
 		required: true,
 	},
-	clientes: [
-		{
-			type: mongoose.Schema.Types.ObjectId,
-			ref: "Cliente",
-		},
-	],
 });
 
 module.exports = mongoose.model("Cidade", schema);
