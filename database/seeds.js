@@ -2,7 +2,7 @@ const seeder = require("mongoose-seed");
 
 const db = "mongodb://mongodb:27017/clients";
 
-seeder.connect(db, () => {
+seeder.connect(db, { useNewUrlParser: true, useUnifiedTopology: true }, () => {
 	seeder.loadModels(["./src/models/Cidade.js", "./src/models/Cliente.js"]);
 	seeder.clearModels(["Cidade", "Cliente"], () => {
 		seeder.populateModels(data, (err, done) => {

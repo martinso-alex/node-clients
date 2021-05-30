@@ -5,12 +5,6 @@ module.exports = (uri) => {
 	mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 	const conn = mongoose.connection;
 
-	conn.on("connected", () => console.log("\n Mongoose! Connected! " + uri));
-
-	conn.on("disconnected", () =>
-		console.log("\n Mongoose! Disconnected from " + uri)
-	);
-
 	conn.on("error", (err) =>
 		console.log("\n Mongoose! Connection error: " + err)
 	);

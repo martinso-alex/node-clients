@@ -4,6 +4,8 @@ services:
     image: mongo
     networks:
       - app-network
+    logging:
+      driver: none
   node:
     build:
       dockerfile: ./dockerfile
@@ -20,7 +22,7 @@ services:
     depends_on:
       - "mongodb"
     command: >
-      sh -c "yarn seed && yarn start"
+      sh -c "yarn seed && yarn test && yarn start"
 networks:
   app-network:
     driver: bridge

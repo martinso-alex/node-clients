@@ -43,23 +43,15 @@ module.exports = {
 	atualizar: async (req, res) => {
 		const { _id } = req.params;
 
-		let { nome, sexo, dtNascimento, idade, cidade } = req.body;
-
-		dtNascimento = dtNascimento
-			? moment(dtNascimento, "DD/MM/YYYY").format("YYYY-MM-DD")
-			: null;
+		let { nome } = req.body;
 
 		let params = {};
 
 		if (nome) params = { ...params, nome };
-		if (sexo) params = { ...params, sexo };
-		if (dtNascimento) params = { ...params, dtNascimento };
-		if (idade) params = { ...params, idade };
-		if (cidade) params = { ...params, cidade };
 
 		await Cliente.updateOne({ _id }, params);
 
-		const cliente = await Cliente.find({ _id }).populate("cidade");
+		const cliente = await Cliente.findOne({ _id }).populate("cidade");
 
 		res.json(cliente);
 	},

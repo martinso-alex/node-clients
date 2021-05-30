@@ -8,6 +8,4 @@ app.use(express.json());
 const routes = require("./routes");
 routes(app);
 
-app.listen(process.env.PORT || "8080");
-
 module.exports = app;
