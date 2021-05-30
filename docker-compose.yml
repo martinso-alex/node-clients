@@ -1,0 +1,26 @@
+version: "3"
+services:
+  mongodb:
+    image: mongo
+    networks:
+      - app-network
+  node:
+    build:
+      dockerfile: ./dockerfile
+      context: .
+    image: alexandre/node-clients
+    container_name: node-clients
+    ports:
+      - "8080:8080"
+    volumes:
+      - .:/app
+      - /app/node_modules
+    networks:
+      - app-network
+    depends_on:
+      - "mongodb"
+    command: >
+      sh -c "yarn seed && yarn start"
+networks:
+  app-network:
+    driver: bridge
